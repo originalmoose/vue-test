@@ -2,7 +2,7 @@
 
 import * as Vue from 'vue';
 import Component from 'vue-class-component';
-import * as $ from 'jquery';
+import Axios from 'axios';
 
 import PostItem from '../posts/post-item.vue';
 import Post from '../../models/post';
@@ -16,12 +16,12 @@ export default class extends Vue {
     postsLoaded: Boolean = false;
 
     mounted() {
-        $.ajax('https://jsonplaceholder.typicode.com/posts').done(res => { 
-            $(res).each((i,v) => {
+        Axios.get('https://jsonplaceholder.typicode.com/posts').then(res => {
+            for (let i of res.data) {
                 let post = new Post();
-                post.deserialize(v);
+                post.deserialize(i);
                 this.posts.push(post);
-            });
+            }
             this.postsLoaded = true;
         });
     }

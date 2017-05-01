@@ -2,7 +2,7 @@
 
 import * as Vue from 'vue';
 import Component from 'vue-class-component';
-import * as $ from 'jquery';
+import Axios from 'axios';
 
 import Post from '../../models/post';
 import Comment from '../../models/comment';
@@ -18,14 +18,16 @@ export default class extends Vue {
     
     loadComments() {
         if (this.commentsLoaded == false) {
-            $.ajax('https://jsonplaceholder.typicode.com/comments?postId=' + this.post.id).done(res => { 
-                $(res).each((i,v) => {
+            Axios.get('https://jsonplaceholder.typicode.com/comments', {
+                params: { postId: this.post.id }  
+            }).then(res => {
+                for (let i of res.data) {
                     let comment = new Comment();
-                    comment.deserialize(v);
+                    comment.deserialize(i);
                     this.comments.push(comment);
-                });
-                this.commentsLoaded = true;
+                }
             });
+            this.commentsLoaded = true;
         }
     }
 }

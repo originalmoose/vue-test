@@ -7,7 +7,7 @@ module.exports = {
     context: path.resolve(__dirname),
 
     entry: {
-        app: ['./src/main.ts']
+        app: ['./src/index.ts']
     },
 
     output: {

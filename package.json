@@ -4,13 +4,14 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "build": "node_modules/webpack/bin/webpack.js --optimize-minimize"
+    "watch": "./node_modules/webpack/bin/webpack.js --watch",
+    "build": "./node_modules/webpack/bin/webpack.js --optimize-minimize"
   },
   "keywords": [],
   "author": "Jacob Mason",
   "license": "",
   "dependencies": {
-    "jquery": "^3.2.1"
+    "axios": "^0.16.1"
   },
   "devDependencies": {
     "@types/node": "7.0.10",
