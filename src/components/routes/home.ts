@@ -16,13 +16,8 @@ export default class extends Vue {
     postsLoaded: Boolean = false;
 
     mounted() {
-        Axios.get('https://jsonplaceholder.typicode.com/posts').then(res => {
-            for (let i of res.data) {
-                let post = new Post();
-                post.deserialize(i);
-                this.posts.push(post);
-            }
-            this.postsLoaded = true;
-        });
+        store.commit('loadPosts');
+        console.log(store.state.posts);
+        this.postsLoaded = true;
     }
 }
