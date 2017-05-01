@@ -16,8 +16,8 @@ export default class extends Vue {
     postsLoaded: Boolean = false;
 
     mounted() {
-        store.commit('loadPosts');
-        console.log(store.state.posts);
+        this.$store.commit('loadPosts');
+        console.log(this.$store.state.posts);
         this.postsLoaded = true;
     }
 }

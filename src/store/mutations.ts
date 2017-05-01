@@ -5,8 +5,8 @@ import Axios from 'axios';
 
 import Post from '../models/post';
 
-export default class {
-  loadPosts() {
+export default {
+  loadPosts(state) {
     Axios.get('https://jsonplaceholder.typicode.com/posts').then(res => {
         for (let i of res.data) {
             let post = new Post();

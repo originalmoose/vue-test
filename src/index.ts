@@ -8,10 +8,11 @@ import Axios from 'axios';
 import App from './components/app.vue';
 import Home from './components/routes/home.vue';
 
-import State from './store/mutations';
-import Mutations from './store/mutations';
+import State from './store/state';
+import mutations from './store/mutations';
 
-Vue.use(VueRouter, Vuex);
+Vue.use(VueRouter);
+Vue.use(Vuex);
 
 const router = new VueRouter({
     routes: [
@@ -20,8 +21,7 @@ const router = new VueRouter({
     ]
 });
 
-let state = new State();
-let mutations = new Mutations();
+const state = new State();
 const store = new Vuex.Store({
     state: state,
     mutations: mutations
